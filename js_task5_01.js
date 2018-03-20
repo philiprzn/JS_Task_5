@@ -1,15 +1,22 @@
 calculator ={
     result : 0,
-    add : function (num1, num2){
-        return this.result += num1;
+
+    add : function (num1){
+        var that = this;
+
+        this.result += num1;
+        return function (b) {
+            that.result += b
+        };
     },
-    substract : function (num1, num2) {
+
+    substract : function (num1) {
         return this.result -= num1
     },
-    divide : function (num1, num2) {
+    divide : function (num1) {
         return this.result /= num1
     },
-    multiply : function (num1, num2) {
+    multiply : function (num1) {
         return this.result *= num1
     },
     getResult : function () {
@@ -17,14 +24,18 @@ calculator ={
     },
     reset : function () {
         return this.result = 0;
-    },
+    }
 };
 
 
-// console.log(calculator.add(3));
-calculator.add(4);
-calculator.substract(1);
+calculator.add(3)(2);
+// calculator.add(3);
+calculator.multiply(3);
 console.log(calculator.getResult());
+
+
+
+
 
 // add : function (num1){
 //         // return function (num2){
